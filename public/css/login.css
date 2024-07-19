@@ -1,0 +1,204 @@
+@font-face {
+    font-family: 'Vazir';
+    src: url('../fonts/Byekan/Vazir.ttf');
+}
+.box {
+    height: 500px;
+    width:300px;
+    margin:100px auto;
+    border: 1px solid #0077ff;
+    box-shadow: 0 8px 16px rgba(31, 38, 135, 0.2);
+    border-radius: 10px;
+    padding: 20px;
+    direction: rtl;
+}
+.box-r {
+    height:680px;
+    width:500px;
+    margin:30px auto;
+    border: 1px solid #0077ff;
+    box-shadow: 0 8px 16px rgba(31, 38, 135, 0.2);
+    border-radius: 10px;
+    padding: 10px;
+    direction: rtl;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+}
+.lable{
+    text-align: right;
+    margin: 10px;
+}
+.title {
+    font-size: 24px;
+    color: #0077ff;
+    font-weight: normal;
+    text-align: center;
+    margin: 30px 0;
+}
+.title-r {
+    font-size: 24px;
+    color: #0077ff;
+    font-weight: normal;
+    text-align: center;
+    margin: 10px 0;
+}
+.auth-login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-control {
+    width: 80%;
+    padding: 10px;
+    height: 45px;
+    border: 1.2px solid #ddd;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+    margin: 0 auto 15px;
+    font-size: 16px;
+    font-family: 'Vazir', tahoma, arial !important;
+}
+.form-controlr{
+    width: 80%;
+    padding: 10px;
+    height: 45px;
+    border: 1.2px solid #ddd;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+    margin: 0 auto 5px;
+    font-size: 16px;
+    font-family: 'Vazir', tahoma, arial !important;
+
+}
+.form-control:focus , .form-controlr:focus{
+    outline: none;
+    border: 2px solid;
+    border-color: #0077ff;
+}
+
+.form-control::placeholder {
+    font-family: 'B Yekan', Tahoma, Arial, sans-serif;
+}
+
+.input-group {
+    position: relative;
+}
+
+.input-group-text {
+    cursor: pointer;
+    position: absolute;
+    left: 15px;
+    top: 45%;
+    transform: translateY(-50%);
+    color: #0077ff;
+}
+
+.form-check {
+    margin:10px 20px;
+}
+
+.btnlogin {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.forget{
+    color: #0077ff;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+}
+.btn {
+    width: 40%;
+    padding: 10px;
+    background-color: #0077ff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block; /* اضافه شده */
+    margin: 10px auto 20px;
+}
+
+.btn p {
+    font-family: 'B Yekan';
+    font-size: 16px;
+}
+
+.form-check-label {
+    margin-bottom: 30px;
+    color: #777;
+}
+
+.divider {
+    margin: 20px 0;
+}
+
+.divider-text {
+    text-align: center;
+    color: #777;
+    margin: 50px 0 20px;
+}
+
+.text-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.text-center a.btn {
+
+    text-align: center;
+    display: inline-block;
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.text-center a.btn:hover {
+    background-color: #218838;
+}
+
+.center-container {
+    text-align: center;
+}
+
+.back {
+    display: inline-block;
+    text-decoration: none;
+    margin: 20px auto;
+    color: #7367f0;
+}
+
+@media screen and (min-width:992px) {
+    .container-all {
+        width: 100vw;
+    }
+
+    .container {
+        width: 60%;
+    }
+
+    .box {
+        width: 40%;
+    }
+
+    .left {
+        width: 40%;
+        display: inline-block;
+
+    }
+}
+
+.text-danger {
+    color: red;
+    font-size: 12px;
+}

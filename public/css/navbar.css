@@ -1,0 +1,176 @@
+/*navbar*/
+
+.container {
+    max-width: 1400px;
+    width: 100vw;
+    height: 70px;
+    margin: 0 auto;
+    position: sticky !important;
+}
+.header_top {
+    display: flex;
+    align-items: center;
+    height: 70px;
+    position: sticky !important;
+
+    z-index: 1000;
+    top: 0;
+    background-color: var(--background);
+    margin: 10px 0 0;
+    justify-content: space-between;
+}
+.header_bottom {
+    flex-direction: row;
+}
+.header_right {
+    display: flex;
+    padding: 0px 10px;
+}
+#logo {
+    margin-left: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-self: start;
+    margin-bottom: 5px;
+}
+.menu_list {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+}
+.menu_item {
+    margin: 0 5px;
+    padding: 10px;
+    color: #999;
+    font-size: 16px;
+    cursor: pointer;
+}
+.selected {
+    background-color: var(--primary-color);
+    color: #fff;
+    margin: 3px 0 0;
+    border-radius: 12px;
+    border: none;
+}
+.selected:hover {
+    border-bottom: none;
+}
+.menu_item:hover {
+    border-bottom: 3px solid #0077ff;
+}
+.header_left {
+    display: flex;
+}
+.mod {
+    color: var(--primary-color);
+    cursor: pointer;
+    font-size: 22px;
+    text-align: center;
+    margin: 15px;
+}
+.loginlink {
+    text-decoration: none;
+    font-size: 16px;
+    color: #fff;
+    border: 1px solid #0e9fe1;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 40px;
+    padding: 5px;
+    margin: 5px ;
+}
+
+.header_left .header_login {
+    background-color: var(--primary-color);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 15px;
+    margin: 0;
+}
+
+.loginhover:hover {
+    scale: 1.05;
+}
+
+.header_left p {
+    color: var(--primary-color);
+    cursor: pointer;
+    margin: 0;
+}
+.navlink {
+    text-decoration: none;
+}
+
+.header_left {
+    position: relative;
+}
+
+.avatar {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.avatar-img {
+    width: 50px;
+    height:50px;
+    border-radius: 50%;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 10px; /* منو از سمت راست باز می‌شود */
+    background-color: #0f172a; /* رنگ پس‌زمینه جدید */
+    color: white; /* رنگ متن‌ها سفید */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 4px;
+    overflow: hidden;
+    min-width: 160px;
+    text-align: right; /* متن‌ها به سمت راست چیده شده‌اند */
+}
+
+.dropdown-menu .dropdown-item {
+    padding: 10px 20px;
+    text-align: right;
+    text-decoration: none;
+    color: white; /* رنگ متن‌ها سفید */
+    display: block;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    background-color: #1e293b; /* رنگ پس‌زمینه هنگام هاور */
+}
+
+.btn-link {
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+    text-align: right;
+    cursor: pointer;
+    color: white; /* رنگ متن‌ها سفید */
+    display: block;
+    width: 100%;
+    text-align: right;
+}
+
+.logout{
+    text-decoration: none;
+}
+
+.dropdown-item:hover{
+    color: #0077ff;
+}

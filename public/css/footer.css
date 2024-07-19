@@ -1,0 +1,69 @@
+footer {
+    margin: 0 auto;
+    color: var(--color);
+    margin: 20px;
+}
+
+.footer {
+    display: flex;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1px;
+}
+
+.aboutus {
+    width: 30%;
+    padding: 0 20px;
+}
+
+.about {
+    color: #0077ff;
+    padding: 5px 0;
+    border-bottom: 1px solid black;
+}
+
+.aboutus p {
+    padding: 10px 0;
+    text-align: justify;
+    line-height: 20px;
+}
+
+.contactus {
+    width: 30%;
+}
+
+.socials {
+    margin: 0 20px;
+    width: 30%;
+    padding: 50px 0;
+}
+
+.social_title {
+    text-align: center;
+    padding: 5px 0;
+    color: #0077ff;
+}
+
+.contactus {
+    margin-right: 12px;
+    display: flex;
+    flex-direction: column;
+}
+
+.media {
+    text-align: center;
+}
+
+.media i {
+    font-size: 25px;
+    padding: 10px;
+    color: #999;
+}
+
+.contact,
+.address {
+    color: #0077ff;
+    border-bottom: 1px solid black;
+    padding: 5px;
+
+}

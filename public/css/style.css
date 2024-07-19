@@ -1,0 +1,144 @@
+/*فونت ها*/
+@font-face {
+    font-family: B Yekan;
+    src: url('../fonts/Byekan/Yekan.ttf');
+}
+
+@font-face {
+    font-family: 'Vazir';
+    src: url('../fonts/Byekan/Vazir.ttf');
+}
+
+@font-face {
+    font-family: Vazirmatn;
+    src: url('../fonts/vazirFD/Vazirmatn-RD-FD-Thin.woff2') format('woff2');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Vazirmatn;
+    src: url('../fonts/vazirFD/Vazirmatn-RD-FD-ExtraLight.woff2') format('woff2');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Vazirmatn;
+    src: url('../fonts/vazirFD/Vazirmatn-RD-FD-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Vazirmatn;
+    src: url('../fonts/vazirFD/Vazirmatn-RD-FD-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Vazirmatn;
+    src: url('../fonts/vazirFD/Vazirmatn-RD-FD-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Vazirmatn;
+    src: url('../fonts/vazirFD/Vazirmatn-RD-FD-SemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Vazirmatn;
+    src: url('../fonts/vazirFD/Vazirmatn-RD-FD-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Vazirmatn;
+    src: url('../fonts/vazirFD/Vazirmatn-RD-FD-ExtraBold.woff2') format('woff2');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Vazirmatn;
+    src: url('../fonts/vazirFD/Vazirmatn-RD-FD-Black.woff2') format('woff2');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+/*اسکرول صفحه*/
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+::-webkit-scrollbar-corner {
+    background: #f1f1f1;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+:root {
+    --primary-color: #0e9fe1;
+    --background: #0f172a;
+    --color: #fff;
+}
+
+
+body {
+    margin: 0 10px 0;
+    background-color: var(--background);
+    color: var(--color);
+    font-family: 'Vazir', tahoma, arial !important;
+}
+
+.container{
+    width: 1200px;
+}
+
+.container-fluid {
+    padding: 0;
+}
+
+
+
+
+
+

@@ -1,0 +1,94 @@
+input[type="text"] {
+    width: 100px;
+    height: 40px !important;
+    margin: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+}
+
+input[type="search"] {
+    width: 400px;
+    height: 40px;
+    border: none !important;
+    border-radius: 8px !important;
+}
+
+.div_search {
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+
+.credit-input {
+    width: 80px;
+    text-align: center;
+}
+.form-container {
+    width: 50%;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="file"]
+ {
+    width: 90%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+::-webkit-scrollbar-corner {
+    background: #f1f1f1;  /* رنگ گوشه‌های اسکرول‌بار در حالت اسکرول عمودی و افقی همزمان */
+}
