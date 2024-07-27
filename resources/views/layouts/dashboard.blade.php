@@ -7,6 +7,8 @@
     <title>@yield('onvan')</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="{{ asset('admincss/vendor/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admincss/vendor/font-awesome/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admincss/css/font.css') }}">
@@ -14,6 +16,7 @@
     <link rel="stylesheet" href="{{ asset('admincss/css/style.default.css') }}" id="theme-stylesheet">
     <link rel="stylesheet" href="{{ asset('admincss/css/custom.css') }}">
     <link rel="shortcut icon" href="{{ asset('admincss/img/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-select.min.css') }}">
 </head>
 
 <body>
@@ -31,13 +34,14 @@
                 </div>
                 @yield('page-content')
             </div>
-            <div >
+            <div>
                 @yield('mohtava')
             </div>
         </div>
-    </div>
+    </div>    @yield('script')
+
     @include('layouts.dashboard.footer')
-    @yield('script')
+
 
     <!-- JavaScript files-->
     <script src="{{ asset('admincss/vendor/jquery/jquery.min.js') }}"></script>
@@ -47,6 +51,11 @@
     <script src="{{ asset('admincss/vendor/chart.js/Chart.min.js') }}"></script>
     <script src="{{ asset('admincss/vendor/jquery-validation/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('admincss/js/front.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-select.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.czMore-latest.js') }}"></script>
+    <script src="{{ asset('/js/admin.js') }}"></script>
+
+    @yield('script')
 </body>
 
 </html>

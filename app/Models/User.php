@@ -46,4 +46,23 @@ class User extends Authenticatable
     {
         return $this->hasOne(Shops::class);
     }
+
+    public function followings()
+    {
+        return $this->hasMany(Following::class, 'follower_id');
+    }
+
+    public function followedShops()
+    {
+        return $this->belongsToMany(Shops::class, 'followings', 'follower_id', 'following_shop_id')->withTimestamps();
+    }
+
+    public function getAvatarUrlAttribute()
+    {
+        if ($this->avatar) {
+            return asset('uploads/avatars/' . $this->avatar);
+        }
+    }
+
+
 }

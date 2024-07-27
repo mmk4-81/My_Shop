@@ -124,10 +124,6 @@
     margin: 10px auto 20px;
 }
 
-.btn p {
-    font-family: 'B Yekan';
-    font-size: 16px;
-}
 
 .form-check-label {
     margin-bottom: 30px;
@@ -172,16 +168,16 @@
 }
 
 .back {
-    display: inline-block;
     text-decoration: none;
-    margin: 20px auto;
-    color: #7367f0;
+    margin: 100px auto;
+    color: #fff;
 }
 
 @media screen and (min-width:992px) {
     .container-all {
         width: 100vw;
-    }
+
+}    }
 
     .container {
         width: 60%;
@@ -196,9 +192,21 @@
         display: inline-block;
 
     }
-}
 
 .text-danger {
     color: red;
     font-size: 12px;
+}
+
+.submit{
+    width: 40%;
+    padding: 10px;
+    background-color: #0077ff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block; 
+    margin: 10px auto 20px;
+    font-size: 16px;
 }

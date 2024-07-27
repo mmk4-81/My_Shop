@@ -59,4 +59,9 @@
         </table>
     </div>
 </div>
+
+<div class="div_deg">
+
+    {{$categories->render()}}
+</div>
 @endsection

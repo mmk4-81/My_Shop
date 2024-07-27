@@ -14,14 +14,19 @@ input[type="search"] {
     border-radius: 8px !important;
 }
 
+.div_deg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:20px 0;
+}
+
 .div_search {
     margin: 10px auto;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
-
 
 
 
@@ -92,3 +97,5 @@ input[type="file"]
 ::-webkit-scrollbar-corner {
     background: #f1f1f1;  /* رنگ گوشه‌های اسکرول‌بار در حالت اسکرول عمودی و افقی همزمان */
 }
+
+

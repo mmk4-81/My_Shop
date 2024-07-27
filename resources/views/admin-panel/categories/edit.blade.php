@@ -1,39 +1,29 @@
 @extends('layouts.dashboard')
 
-@section('onvan', 'ویرایش دسته بندی  ')
-{{-- @section('page-title', '  ویژگی ها') --}}
-{{-- @section('role', $user->hasRole('admin') ? 'ادمین ' : 'فروشنده ')
-@section('user-role', $user->hasRole('admin') ? 'ادمین سایت' : 'فروشنده سایت') --}}
-
-
+@section('onvan', 'ویرایش دسته بندی')
+@section('page-title', 'ویرایش دسته بندی')
 
 @section('mohtava')
 
-<div class="col-xl-12 col-md-12 mb-4 p-md-5 ">
+<div class="col-xl-12 col-md-12 mb-4 p-md-5">
     <div class="mb-4">
-        <h5 class="font-weight-bold">ویرایش دسته بندی : {{ $category->category_name }}</h5>
+        <h5 class="font-weight-bold">ویرایش دسته بندی: {{ $category->category_name }}</h5>
     </div>
     <hr>
-
 
     <form action="{{ route('admin.categories.update', ['category' => $category->id]) }}" method="POST">
         @csrf
         @method('put')
         <div class="form-row">
-            <div class="form-group col-md-3">
+            <div class="form-group col-md-4">
                 <label for="name">نام</label>
-                <input class="form-control" id="name" name="name" type="text" value="{{ $category->category_name }}">
+                <input class="form-control" id="name" name="category_name" type="text" value="{{ old('category_name', $category->category_name) }}">
             </div>
 
-            <div class="form-group col-md-3">
-                <label for="slug">نام انگلیسی</label>
-                <input class="form-control" id="slug" name="slug" type="text" value="{{ $category->slug }}">
-            </div>
-
-            <div class="form-group col-md-3">
+            <div class="form-group col-md-4">
                 <label for="parent_id">والد</label>
-                <select class="form-control" id="parent_id" name="parent_id">
-                    <option value="0">بدون والد</option>
+                <select class="form-control selectpicker" id="parent_id" name="parent_id" data-live-search="true">
+                    <option value="0" {{ $category->parent_id == 0 ? 'selected' : '' }}>بدون والد</option>
                     @foreach ($parentCategories as $parentCategory)
                         <option value="{{ $parentCategory->id }}" {{ $category->parent_id == $parentCategory->id ? 'selected' : '' }}>
                             {{ $parentCategory->category_name }}
@@ -42,23 +32,21 @@
                 </select>
             </div>
 
-
-            <div class="form-group col-md-3">
+            <div class="form-group col-md-4">
                 <label for="is_active">وضعیت</label>
-                <select class="form-control" id="is_active" name="is_active">
+                <select class="form-control selectpicker" id="is_active" name="is_active" data-live-search="true">
                     <option value="1" {{ $category->getRawOriginal('is_active') ? 'selected' : '' }}>فعال</option>
-                    <option value="0" {{ $category->getRawOriginal('is_active') ? '' : 'selected' }}>غیرفعال</option>
+                    <option value="0" {{ !$category->getRawOriginal('is_active') ? 'selected' : '' }}>غیرفعال</option>
                 </select>
             </div>
 
-            <div class="form-group col-md-3">
+            <div class="form-group col-md-4">
                 <label for="attribute_ids">ویژگی</label>
-                <select id="attributeSelect" name="attribute_ids[]" class="form-control" multiple
-                    data-live-search="true">
+                <select id="attributeSelect" name="attribute_ids[]" class="form-control selectpicker" multiple data-live-search="true">
                     @foreach ($attributes as $attribute)
-                        <option value="{{ $attribute->id }}"
-                            {{ in_array($attribute->id , $category->attributes()->pluck('id')->toArray()) ? 'selected' : '' }}
-                            >{{ $attribute->name }}</option>
+                        <option value="{{ $attribute->id }}" {{ in_array($attribute->id, $category->attributes()->pluck('id')->toArray()) ? 'selected' : '' }}>
+                            {{ $attribute->name }}
+                        </option>
                     @endforeach
                 </select>
             </div>
@@ -72,26 +60,21 @@
                     @endforeach
                 </select>
             </div>
+
             <div class="form-group col-md-3">
-                <label for="variationSelect">انتخاب ویژگی متغیر</label>
+                <label for="attribute_is_filter_ids">انتخاب ویژگی متغیر</label>
                 <select id="variationSelect" name="variation_id" class="form-control" data-live-search="true">
-                    @foreach ($category->attributes as $attribute)
-                        <option value="{{ $attribute->id }}" {{ $attribute->pivot->is_variation ? 'selected' : '' }}>{{ $attribute->name }}</option>
-                    @endforeach
+                    @php
+                        $variationAttribute = $category->attributes()->wherePivot('is_variation', 1)->first();
+                    @endphp
+                    @if($variationAttribute)
+                        <option value="{{ $variationAttribute->id }}" selected>{{ $variationAttribute->name }}</option>
+                    @else
+                        <option value="" selected>هیچ ویژگی متغیری موجود نیست</option>
+                    @endif
                 </select>
-
             </div>
 
-            <div class="form-group col-md-3">
-                <label for="icon">آیکون</label>
-                <input class="form-control" id="icon" name="icon" type="text" value="{{ $category->icon }}">
-            </div>
-
-            <div class="form-group col-md-12">
-                <label for="description">توضیحات</label>
-                <textarea class="form-control" id="description"
-                    name="description">{{ $category->description }}</textarea>
-            </div>
 
         </div>
 
@@ -100,5 +83,59 @@
     </form>
 </div>
 
+@endsection
 
+
+@section('script')
+    <script>
+        $('#attributeSelect').selectpicker({
+            'title': 'انتخاب ویژگی'
+        });
+
+        $('#attributeSelect').on('changed.bs.select', function() {
+            let attributesSelected = $(this).val();
+            let attributes = @json($attributes);
+
+            let attributeForFilter = [];
+
+            attributes.map((attribute) => {
+                $.each(attributesSelected , function(i,element){
+                    if( attribute.id == element ){
+                        attributeForFilter.push(attribute);
+                    }
+                });
+            });
+
+            $("#attributeIsFilterSelect").find("option").remove();
+            $("#variationSelect").find("option").remove();
+            attributeForFilter.forEach((element)=>{
+                let attributeFilterOption = $("<option/>" , {
+                    value : element.id,
+                    text : element.name
+                });
+
+                let variationOption = $("<option/>" , {
+                    value : element.id,
+                    text : element.name
+                });
+
+                $("#attributeIsFilterSelect").append(attributeFilterOption);
+                $("#attributeIsFilterSelect").selectpicker('refresh');
+
+                $("#variationSelect").append(variationOption);
+                $("#variationSelect").selectpicker('refresh');
+            });
+
+
+        });
+
+        $("#attributeIsFilterSelect").selectpicker({
+            'title': 'انتخاب ویژگی'
+        });
+
+        $("#variationSelect").selectpicker({
+            'title': 'انتخاب متغیر'
+        });
+
+    </script>
 @endsection

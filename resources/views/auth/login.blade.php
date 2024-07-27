@@ -40,7 +40,7 @@
                     <span>{{ __('مرا به خاطر بسپار') }}</span>
                 </label>
             </div>
-            <button type="submit" class="btn">
+            <button class="submit" type="submit" class="btn">
                 <p>{{ __(' ورود') }}</p>
             </button>
 
@@ -54,8 +54,12 @@
                     {{ __('ثبت نام نکرده اید؟') }}
                 </a>
 
+
             </div>
         </form>
+        {{-- <a class="back" href="{{ url('/') }}">
+            {{ __('برگشت به صفحه اصلی') }}
+        </a> --}}
     </div>
 </body>
 

@@ -29,12 +29,28 @@ class Category extends Model
             ]
         ];
     }
+    public function getIsActiveAttribute($is_active)
+    {
+        return $is_active ? 'فعال' : 'غیرفعال' ;
+    }
+
     public function parent()
     {
         return $this->belongsTo(Category::class, 'parent_id');
     }
+
+    public function children()
+    {
+        return $this->hasMany(Category::class, 'parent_id');
+    }
+
     public function attributes()
     {
-        return $this->belongsToMany(Attribute::class)->withPivot('is_filter', 'is_variation');
+        return $this->belongsToMany(Attribute::class , 'attribute_category');
+    }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
     }
 }

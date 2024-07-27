@@ -44,6 +44,9 @@
         </table>
     </div>
 </div>
+<div class="div_deg">
+    {{$attributes->render()}}
+</div>
 @endsection
 
 

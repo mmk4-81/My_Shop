@@ -6,12 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\Attribute;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $categories = Category::latest()->paginate(5);
@@ -34,35 +32,45 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'slug' => 'required|unique:categories,slug',
-            'parent_id' => 'required',
+            'category_name' => 'required',
+            'parent_id' => 'nullable|exists:categories,id',
             'attribute_ids' => 'required',
+            'attribute_ids.*' => 'exists:attributes,id',
             'attribute_is_filter_ids' => 'required',
-            'variation_id' => 'required',
+            'attribute_is_filter_ids.*' => 'exists:attributes,id',
+            'variation_id' => 'required|exists:attributes,id',
         ]);
 
+        try {
+            DB::beginTransaction();
 
-
-        $category = Category::create([
-            'category_name' => $request->name,
+            $category = Category::create([
+                'category_name' => $request->category_name,
             'parent_id' => $request->parent_id,
-            'icon' => $request->icon,
-            'description' => $request->description,
-        ]);
+            ]);
 
-        // foreach ($request->attribute_ids as $attributeId) {
-        //     $attribute = Attribute::findOrFail($attributeId);
-        //     $attribute->categories()->attach($category->id, [
-        //         'is_filter' => in_array($attributeId, $request->attribute_is_filter_ids) ? 1 : 0,
-        //         'is_variation' => $request->variation_id == $attributeId ? 1 : 0
-        //     ]);
-        // }
+            foreach ($request->attribute_ids as $attributeId) {
+                $attribute = Attribute::findOrFail($attributeId);
+                $attribute->categories()->attach($category->id, [
+                    'is_filter' => in_array($attributeId, $request->attribute_is_filter_ids) ? 1 : 0,
+                    'is_variation' => $request->variation_id == $attributeId ? 1 : 0
+                ]);
+            }
+
+            DB::commit();
+        } catch (\Exception $ex) {
+            DB::rollBack();
+            toastr()->closeButton()->success('دسته بندی با موفقیت اضافه نشد');
+            return redirect()->back();
+        }
 
 
         toastr()->closeButton()->success('دسته بندی با موفقیت اضافه شد');
-        return redirect()->route('admin-panel.categories.index');
+
+        return redirect()->route('admin.categories.index');
     }
+
+
 
     /**
      * Display the specified resource.
@@ -89,31 +97,41 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         $request->validate([
-            'name' => 'required',
-            'slug' => 'required|unique:categories,slug,'.$category->id,
+            'category_name' => 'required',
             'parent_id' => 'required',
             'attribute_ids' => 'required',
+            'attribute_ids.*' => 'exists:attributes,id',
             'attribute_is_filter_ids' => 'required',
-            'variation_id' => 'required',
+            'attribute_is_filter_ids.*' => 'exists:attributes,id',
+            'variation_id' => 'required|exists:attributes,id',
         ]);
 
-        $category->update([
-            'category_name' => $request->name,
-            'slug' => $request->slug,
-            'parent_id' => $request->parent_id,
-            'icon' => $request->icon,
-            'description' => $request->description,
-        ]);
 
-        $category->attributes()->detach();
+        try {
+            DB::beginTransaction();
 
-        foreach ($request->attribute_ids as $attributeId) {
-            $attribute = Attribute::findOrFail($attributeId);
-            $attribute->categories()->attach($category->id, [
-                'is_filter' => in_array($attributeId, $request->attribute_is_filter_ids) ? 1 : 0,
-                'is_variation' => $request->variation_id == $attributeId ? 1 : 0
+            $category->update([
+                'category_name' => $request->category_name,
+                'parent_id' => $request->parent_id,
             ]);
+
+            $category->attributes()->detach();
+
+            foreach ($request->attribute_ids as $attributeId) {
+                $attribute = Attribute::findOrFail($attributeId);
+                $attribute->categories()->attach($category->id, [
+                    'is_filter' => in_array($attributeId, $request->attribute_is_filter_ids) ? 1 : 0,
+                    'is_variation' => $request->variation_id == $attributeId ? 1 : 0
+                ]);
+            }
+
+            DB::commit();
+        } catch (\Exception $ex) {
+            DB::rollBack();
+            toastr()->closeButton()->error('دسته بندی با موفقیت ویرایش نشد');
+            return redirect()->back();
         }
+
         toastr()->closeButton()->success('دسته بندی با موفقیت ویرایش شد');
         return redirect()->route('admin.categories.index');
     }
@@ -129,4 +147,12 @@ class CategoryController extends Controller
 
         return redirect()->back();
     }
+
+    public function getCategoryAttributes(Category $category)
+    {
+        $attributes = $category->attributes()->wherePivot('is_variation', 0)->get();
+        $variation = $category->attributes()->wherePivot('is_variation', 1)->first();
+        return ['attrubtes' => $attributes, 'variation' => $variation];
+    }
+
 }

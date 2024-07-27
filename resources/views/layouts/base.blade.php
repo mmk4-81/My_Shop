@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="{{ url('css/home/categories.css') }}">
     <link rel="stylesheet" href="{{ url('css/home/product.css') }}">
     <link rel="stylesheet" href="{{ url('css/home/shops.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/sidebar.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/products/products.css') }}">
 
 
 </head>

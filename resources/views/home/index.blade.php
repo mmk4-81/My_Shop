@@ -9,5 +9,4 @@
 @include('home.categories')
 @include('home.product')
 @include('home.shops')
-{{-- @include('products.latest') --}}
 @endsection

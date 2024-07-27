@@ -19,7 +19,7 @@
                 <tr>
                     <th>#</th>
                     <th>نام</th>
-                    <th>نام انگلیسی</th>
+                    <th>نام اسلاگ</th>
                     <th>والد</th>
                     <th>وضعیت</th>
                     <th>عملیات</th>
@@ -57,5 +57,8 @@
             </tbody>
         </table>
     </div>
+</div>
+<div class="div_deg">
+    {{$categories->links()}}
 </div>
 @endsection

@@ -18,8 +18,27 @@ class Shops extends Model
         'is_active',
     ];
 
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'shop_name'
+            ]
+        ];
+    }
     public function user()
     {
         return $this->belongsTo(User::class);
     }
+
+    public function followers()
+    {
+        return $this->belongsToMany(User::class, 'followings', 'following_shop_id', 'follower_id')->withTimestamps();
+    }
+
+    public function followersCount()
+    {
+        return Following::where('following_shop_id', $this->id)->count();
+    }
+
 }

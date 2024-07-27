@@ -52,7 +52,7 @@
                 <x-input-error :messages="$errors->get('password_confirmation')" class="text-danger" />
             </div>
 
-            <button type="submit" class="btn">
+            <button class="submit" type="submit" class="btn">
                 <p>{{ __('ثبت نام') }}</p>
             </button>
 

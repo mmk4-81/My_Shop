@@ -13,14 +13,15 @@
       </div>
       <div class="container-fluid d-flex align-items-center justify-content-between">
         <div class="navbar-header">
-          <!-- Navbar Header-->
-            {{-- <div class="brand-text brand-big visible text-uppercase"><strong class="text-primary">داشبورد</strong><strong>@yield('role', 'ادمین')</strong></div>
-            <div class="brand-text brand-sm"><strong class="text-primary">داشبورد</strong><strong>@yield('role', 'ادمین')</strong></div></a> --}}
-            <div class="brand-text brand-big visible text-uppercase"><strong class="text-primary">داشبورد</strong><strong>ادمین</strong></div>
-            <div class="brand-text brand-sm"><strong class="text-primary">داشبورد</strong><strong>ادمین</strong></div></a>
-            <!-- Sidebar Toggle Btn-->
-          {{-- <button class="sidebar-toggle"><i class="fa fa-long-arrow-right"></i></button> --}}
-        </div>
+
+            <div class="brand-text brand-big visible text-uppercase">
+                @if (request()->is('admin*'))
+                    <strong class="text-primary">داشبورد</strong><strong>  ادمین </strong>
+                @else
+                    <strong class="text-primary">داشبورد</strong><strong>  فروشنده </strong>
+                @endif
+            </div>
+                    </div>
 
 
           </div>

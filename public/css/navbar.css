@@ -53,6 +53,11 @@
     border-radius: 12px;
     border: none;
 }
+
+.selectedcart{
+    padding-bottom: 5px;
+   border-bottom: 2px solid #fff;
+}
 .selected:hover {
     border-bottom: none;
 }
@@ -161,7 +166,7 @@
     margin: 0;
     text-align: right;
     cursor: pointer;
-    color: white; /* رنگ متن‌ها سفید */
+    color: white;
     display: block;
     width: 100%;
     text-align: right;
@@ -173,4 +178,60 @@
 
 .dropdown-item:hover{
     color: #0077ff;
+}
+
+
+.menu_item {
+    position: relative;
+    display: inline-block;
+}
+
+.menu_item .navlink {
+    display: inline-block;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.menu_item .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #0f172a;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+    min-width: 200px;
+    border-radius: 8px;
+}
+
+.menu_item .dropdown-menu li {
+    list-style: none;
+}
+
+.menu_item .dropdown-menu li a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #fff;
+}
+
+.menu_item .dropdown-menu li a:hover {
+    background-color: #f1f1f1;
+    color: #0077ff;
+}
+
+.menu_item:hover .dropdown-menu {
+    display: block;
+}
+
+.drop{
+    color: #999;
+}
+
+.parent{
+    display: flex;
+    flex-direction: row;
+}
+.selectedd{
+   border-bottom: 2px solid #0077ff;
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -47,6 +48,11 @@ class RegisteredUserController extends Controller
         event(new Registered($user));
 
         Auth::login($user);
+        $roleuser = Role::find(2);
+        if ($user && $roleuser) {
+            $user->roles()->attach($roleuser);
+        }
+
         toastr()->closeButton()->success('کاربر با موفقیت ثبت نام شد');
 
         return redirect(route('dashboard', absolute: false));

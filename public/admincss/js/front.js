@@ -1,3 +1,6 @@
+requier('bootstrap-select');
+
+
 $(function () {
 
     $('[data-toggle="tooltip"]').tooltip()
@@ -70,7 +73,7 @@ $(function () {
     });
 
 
-    
+
     $('.search-open').on('click', function (e) {
         e.preventDefault();
         $('.search-panel').fadeIn(100);

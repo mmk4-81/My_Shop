@@ -15,6 +15,7 @@
     @endif
     <form action="{{ route('admin.users.update', $user->id) }}" method="post" enctype="multipart/form-data">
         @csrf
+        @method('PUT')
         <div class="form-group">
             <label for="name">نام:</label>
             <input type="text" name="name" value="{{ $user->name }}" required>
@@ -39,7 +40,8 @@
             @endif
         </div>
         <input type="submit" value="ذخیره" class="btn btn-primary">
-        <a href="{{ url('/admin/view_users') }}" class="btn btn-danger">لغو</a>
+        <a href="{{ Route('admin.users.index') }}" class="btn btn-danger">لغو</a>
     </form>
+
 </div>
 @endsection

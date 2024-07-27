@@ -4,35 +4,22 @@
         <!-- Sidebar Header-->
         <div class="sidebar-header d-flex align-items-center">
             <div class="avatar">
-                {{-- <img src="{{ $shop && $shop->avatar_shops ? asset('uploads/avatars/' . $shop->avatar_shops) : asset('seller-panelcss/img/mypic.png') }}"
-                    alt="..." class="img-fluid rounded-circle"> --}}
-                <img src="{{ asset('uploads/avatars/1720967302.jpg') }}" alt="..." class="img-fluid rounded-circle">
-
+                <img src="{{ Auth::user()->shop && Auth::user()->shop->avatar_shops ? asset('uploads/avatars/shops/' . Auth::user()->shop->avatar_shops) : asset('seller-panelcss/img/mypic.png') }}" alt="..." class="img-fluid rounded-circle">
             </div>
             <div class="title">
-                {{-- <h1 class="h5 m-2">{{ $user->name }}</h1> --}}
-                <h1 class="h5 m-2">محمد مهدی کربلایی</h1>
-                {{-- <p class="m-2">{{ $shop ? $shop->shop_name : 'نام فروشگاه' }}</p> --}}
-                <p class="m-2">بوتیک سفید</p>
+                <h1 class="h5 m-2">{{ Auth::user()->shop ? Auth::user()->shop->shop_name : 'نام فروشگاه' }}</h1>
+                <p class="m-2">{{ Auth::user()->name }}</p>
             </div>
         </div>
-        <div class="d-flex flex-md-column align-items-center ">
-            <li class="{{ Request::is('seller-panel/followers') ? 'active' : '' }}">
-                <a href="{{ url('/seller-panel/followers') }}">
-                    <i class=""></i> دنبال کننده ها: 15
-                </a>
-            </li>
-            <li class="{{ Request::is('seller-panel/following') ? 'active' : '' }}">
-                <a href="{{ url('/seller-panel/following') }}">
-                    <i class=""></i> دنبال‌شونده ها: 20
-                </a>
-            </li>
 
-        </div>
+
         <span class="heading">پیشخوان</span>
         <ul class="list-unstyled">
             <li class="{{ Request::is('seller-panel/dashboard') ? 'active' : '' }}">
                 <a href="{{ url('/seller-panel/dashboard') }}"> <i class=""></i> داشبورد </a>
+            </li>
+            <li class="{{ Request::is('seller-panel/myshop*') ? 'active' : '' }}">
+                <a href="{{ url('/seller-panel/myshop') }}"> <i class=""></i> فروشگاه من </a>
             </li>
             <li class="{{ Request::is('seller-panel/attributes*') ? 'active' : '' }}">
                 <a href="{{ url('/seller-panel/attributes') }}"> <i class=""></i> ویژگی ها </a>
@@ -45,6 +32,9 @@
             </li>
             <li class="{{ Request::is('seller-panel/orders*') ? 'active' : '' }}">
                 <a href="{{ url('/seller-panel/orders') }}"> <i class=""></i> سفارشات </a>
+            </li>
+            <li >
+                <a href="{{ url('/profile') }}"><i class=""></i>پروفایل</a>
             </li>
         </ul>
     </nav>
