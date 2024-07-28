@@ -16,8 +16,7 @@ class ShopPageController extends Controller
      */
     public function index()
     {
-        // نمایش همه فروشگاه‌ها
-        $shops = Shops::all();
+        $shops = Shops::latest()->paginate(12);
         $followedShops = Auth::check() ? Auth::user()->followedShops->pluck('id')->toArray() : [];
 
         return view('shops.index', compact('shops', 'followedShops'));
@@ -26,17 +25,18 @@ class ShopPageController extends Controller
     public function show($id)
     {
         $shop = Shops::findOrFail($id);
-        $products = Product::where('shop_id', $shop->id)->get();
+        $products = Product::where('shop_id', $shop->id)->where('is_active', 1)->get();
         $followedShops = Auth::check() ? Auth::user()->followedShops->pluck('id')->toArray() : [];
         $followersCount = $shop->followersCount();
 
-        return view('shops.show', compact('shop', 'followersCount','followedShops','products'));
+        return view('shops.show', compact('shop', 'followersCount', 'followedShops', 'products'));
     }
+
 
     public function search_shops(Request $request)
     {
         $search = $request->input('search');
-        $shops = Shops::where('shop_name', 'LIKE', '%' . $search . '%')->get();
+        $shops = Shops::where('shop_name', 'LIKE', '%' . $search . '%')->paginate(12);
         $followedShops = Auth::check() ? Auth::user()->followedShops->pluck('id')->toArray() : [];
         return view('shops.index', compact('shops', 'followedShops'));
     }

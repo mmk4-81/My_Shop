@@ -144,7 +144,7 @@
     border-radius: 4px;
     overflow: hidden;
     min-width: 160px;
-    text-align: right; /* متن‌ها به سمت راست چیده شده‌اند */
+    text-align: right;
 }
 
 .dropdown-menu .dropdown-item {
@@ -152,7 +152,9 @@
     text-align: right;
     text-decoration: none;
     color: white; /* رنگ متن‌ها سفید */
-    display: block;
+    display: flex;
+    flex-direction: row;
+
 }
 
 .dropdown-menu .dropdown-item:hover {
@@ -234,4 +236,105 @@
 }
 .selectedd{
    border-bottom: 2px solid #0077ff;
+}
+a.menu-title:hover{
+
+    background-color: #0f172a !important;
+    color: #fff !important;
+}
+
+
+li > a.menu-title{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.menu_item .mega-menu {
+    background-color: #091e2ad8;
+    color: white;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    min-width: 300px;
+    text-align: right;
+    box-shadow: 0 0 20px 0.4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    left: -90%; /* تنظیم منو به سمت وسط */
+    padding: 20px;
+    position: absolute;
+    top: 100%;
+    transform: rotateX(90deg);
+    transform-origin: center top 0;
+    transition: all 0.5s ease 0s;
+    visibility: hidden;
+    width: auto;
+    z-index: 999;
+    height: auto;
+    /* border: 1px dashed #0e9fe1; */
+  }
+
+  .menu_item:hover .mega-menu {
+    transform: rotateX(0deg);
+    visibility: visible;
+  }
+
+  .mega-menu > li {
+    padding-right: 20px;
+  }
+
+  .mega-menu > li > a.menu-title {
+    color: #0e9fe1;
+    font-size: 16px;
+    font-family: "Vazir" !important;
+    display: block;
+    /* margin-bottom: 20px; */
+    text-decoration: none;
+    border-bottom: 1px solid #fff;
+    padding: 10px 15px;
+    margin: 5px 20px 20px;
+  }
+
+  .mega-menu > li > ul.submenu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .mega-menu > li > ul.submenu > li {
+    margin-bottom: 5px;
+  }
+
+  .mega-menu > li > ul.submenu > li > a {
+    font-size: 14px;
+    font-family: "Vazir" !important;
+    display: block;
+    text-transform: capitalize;
+    text-decoration: none;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .mega-menu > li > ul.submenu > li > a:hover {
+    color: #0077ff;
+  }
+  .cartlink {
+    position: relative;
+    display: inline-block;
+}
+
+.cart-badge {
+    position: absolute;
+    top: -5px;
+    right: -8px;
+    background-color: #0077ff;
+    color: white;
+    border-radius: 50%;
+    padding: 5px 10px;
+    font-size: 8px;
+    font-weight: bold;
+    min-width: 20px;
+    text-align: center;
 }

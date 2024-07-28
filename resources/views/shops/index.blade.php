@@ -31,19 +31,21 @@
                 <i class="fas fa-shop icons"></i> {{ $shop->shop_name }}
             </div>
             <div class="button-shop">
-                @if (in_array($shop->id, $followedShops))
-                    <form action="{{ route('shops.unfollow', ['shop' => $shop->id]) }}" method="POST">
-                        @csrf
-                        @method('POST')
-                        <button type="submit" class="follow">لغو دنبال کردن</button>
-                    </form>
-                @else
-                    <form action="{{ route('shops.follow', ['shop' => $shop->id]) }}" method="POST">
-                        @csrf
-                        @method('POST')
-                        <button type="submit" class="follow">دنبال کردن</button>
-                    </form>
-                @endif
+                @auth
+                    @if (in_array($shop->id, $followedShops))
+                        <form action="{{ route('shops.unfollow', ['shop' => $shop->id]) }}" method="POST">
+                            @csrf
+                            @method('POST')
+                            <button type="submit" class="follow">لغو دنبال کردن</button>
+                        </form>
+                    @else
+                        <form action="{{ route('shops.follow', ['shop' => $shop->id]) }}" method="POST">
+                            @csrf
+                            @method('POST')
+                            <button type="submit" class="follow">دنبال کردن</button>
+                        </form>
+                    @endif
+                @endauth
                 <a href="{{ route('shops.show', ['shop' => $shop->id]) }}" class="visit_button">
                     <button class="visit">مشاهده فروشگاه</button>
                 </a>
@@ -57,4 +59,7 @@
     <p>هیچ فروشگاهی یافت نشد.</p>
 @endif
 
+<div class="d-flex justify-content-center">
+    {{$shops->links()}}
+</div>
 @endsection

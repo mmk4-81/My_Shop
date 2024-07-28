@@ -1,59 +1,7 @@
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
-    .sidebar-style.mr-30 {
-        margin-right: 0;
-    }
-}
-
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-    .sidebar-style {
-        margin-top: 30px;
-    }
-
-    .sidebar-style.mr-30 {
-        margin-right: 0;
-    }
-}
-
-@media only screen and (max-width: 767px) {
-    .sidebar-style {
-        margin-top: 30px;
-    }
-
-    .sidebar-style.mr-30 {
-        margin-right: 0;
-    }
-}
-
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
-    .sidebar-style.ml-30 {
-        margin-left: 0;
-    }
-}
-
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-    .sidebar-style {
-        margin-top: 30px;
-    }
-
-    .sidebar-style.ml-30 {
-        margin-left: 0;
-    }
-}
-
-@media only screen and (max-width: 767px) {
-    .sidebar-style {
-        margin-top: 40px;
-    }
-
-    .sidebar-style.ml-30 {
-        margin-left: 0;
-    }
-}
-
 .sidebar-widget h4.pro-sidebar-title {
     font-size: 17px;
     font-weight: 500;
-    margin: 0;
+    margin: 10px 0;
     font-family: "Vazir" !important;
 }
 
@@ -119,7 +67,13 @@
     border-width: 0 2px 2px 0;
     transform: rotate(45deg);
 }
+#search-input{
+    padding: 5px 10px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
 
+}
 .sidebar-widget .sidebar-widget-list ul li a {
     margin-right: 25px;
     display: block;
@@ -189,4 +143,23 @@ a
 
 ul{
     list-style: none;
+}
+.pro-sidebar-search-form {
+    position: relative;
+    width: 100%;
+}
+
+#search-input {
+    width: 100%;
+    padding-right: 40px; /* برای ایجاد فضای کافی برای آیکون */
+    box-sizing: border-box;
+}
+
+.pro-sidebar-search-form .fas.fa-magnifying-glass {
+    position: absolute;
+    left: 10px; /* موقعیت‌دهی آیکون داخل فیلد */
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #000;
 }

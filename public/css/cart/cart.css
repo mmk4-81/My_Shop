@@ -1,0 +1,68 @@
+/* General Container Styling */
+.container-cart {
+    max-width: 900px;
+    margin: 80px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Title Styling */
+.title-cart {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Table Styling */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.table thead th {
+    background-color: #007bff;
+    color: #fff;
+    padding: 12px;
+    text-align: center;
+}
+
+.table tbody td {
+    background-color: #fff;
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+
+}
+
+.table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Button Styling */
+.btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* Empty Cart Message Styling */
+p {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #666;
+}

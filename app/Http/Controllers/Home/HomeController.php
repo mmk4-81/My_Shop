@@ -14,11 +14,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $products = Product::orderBy('created_at', 'desc')->get();
-        $shops = Shops::orderBy('created_at', 'asc')->get();
-        return view('home.index',compact('shops','products'));
+        $products = Product::where('is_active', 1)->orderBy('created_at', 'desc')->paginate(12);
+        $shops = Shops::orderBy('created_at', 'asc')->paginate(12);
 
+        return view('home.index', compact('shops', 'products'));
     }
+
 
     /**
      * Show the form for creating a new resource.

@@ -28,7 +28,7 @@
     flex-direction: row-reverse;
     flex-wrap: nowrap;
     align-items: center;
-    justify-content: space-around;
+    justify-content: flex-start;
 }
 .product-title{
     text-align: center;

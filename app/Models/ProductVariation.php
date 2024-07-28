@@ -13,5 +13,4 @@ class ProductVariation extends Model
     protected $fillable = [
         'attribute_id', 'product_id', 'value', 'price', 'quantity',
     ];
-
 }

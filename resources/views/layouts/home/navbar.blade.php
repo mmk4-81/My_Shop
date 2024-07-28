@@ -8,17 +8,17 @@
                 <a href="{{ url('/') }}" class="navlink">
                     <li class="menu_item {{ Request::is('/') ? 'selected' : '' }}">صفحه اصلی</li>
                 </a>
-                <li class="menu_item {{ Request::is('categories*') ? 'selectedd' : '' }}">
+                <li class="menu_item {{ Request::is('categories*') ? 'selectedd' : '' }} {{ Request::is('products*') ? 'selectedd' : '' }}">
                     <a href="#" class="navlink drop">
                         محصولات
                     </a>
                     @php
                         $parentCategories = App\Models\Category::where('parent_id', 0)->get();
                     @endphp
-                    <ul class="dropdown-menu">
+                    <ul class=" mega-menu">
                         @foreach ($parentCategories as $parentCategory)
                             <li  >
-                                <a class="menu-title" href="{{ route('home.category.show', ['category' => $parentCategory->slug ]) }}">
+                                <a class="menu-title" href="#">
                                     {{ $parentCategory->category_name }}
                                 </a>
                                 <ul class="submenu">
@@ -32,21 +32,6 @@
                 </li>
 
 
-                {{-- @php
-                $parentCategories = App\Models\Category::where('parent_id', 0)->get();
-            @endphp
-            @foreach ($parentCategories as $parentCategory)
-                <li>
-                    <a class="menu-title" href="}">
-                        {{ $parentCategory->category_name }}
-                    </a>
-                    <ul class="submenu">
-                        @foreach ($parentCategory->children as $childCategory)
-                            <li><a href="">{{ $childCategory->category_name }}</a></li>
-                        @endforeach
-                    </ul>
-                </li>
-            @endforeach --}}
                 <a href="{{ url('/shops') }}" class="navlink">
                     <li class="menu_item {{ Request::is('shops*') ? 'selected' : '' }}">فروشگاه ها </li>
                 </a>
@@ -57,15 +42,19 @@
         <!-- Header Left -->
         <div class="header_left">
             <i class="fas fa-moon mod" id="moon-icon"></i>
-            <a href="{{ route('cart.index') }}" class="cartlink">
+            <a href="{{ route('cart.show') }}" class="cartlink">
                 <i class="fas fa-shopping-cart mod {{ Request::is('cart*') ? 'selectedcart' : '' }}"></i>
+                @if(session()->has('cart') && count(session('cart')) > 0)
+                    <span class="cart-badge">{{ count(session('cart')) }}</span>
+                @endif
             </a>
+
             @if (Route::has('login'))
                 @auth
 
                     <div class="dropdown">
                         <a href="#" class="avatar" id="avatarDropdown">
-                            <img src="{{ Auth::user()->avatar ? asset('uploads/avatars/' . Auth::user()->avatar) : asset('admincss/img/mypic.png') }}" alt="..." class="avatar-img">
+                            <img src="{{ Auth::user()->avatar ? asset('uploads/avatars/' . Auth::user()->avatar) : '' }}" alt="..." class="avatar-img">
 
                         </a>
                         <div class="dropdown-menu" id="dropdownMenu">

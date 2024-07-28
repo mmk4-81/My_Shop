@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="{{ url('css/home/categories.css') }}">
     <link rel="stylesheet" href="{{ url('css/home/product.css') }}">
     <link rel="stylesheet" href="{{ url('css/home/shops.css') }}">
+    <link rel="stylesheet" href="{{ url('css/cart/cart.css') }}">
     <link rel="stylesheet" href="{{ asset('css/sidebar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/products/products.css') }}">
 
@@ -37,6 +38,17 @@
     @include('layouts.home.footer')
 
 
+
+    <!-- JavaScript files-->
+    <script src="{{ asset('admincss/vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('admincss/vendor/popper.js/umd/popper.min.js') }}"></script>
+    <script src="{{ asset('admincss/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('admincss/vendor/jquery.cookie/jquery.cookie.js') }}"></script>
+    <script src="{{ asset('admincss/vendor/jquery-validation/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-select.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.czMore-latest.js') }}"></script>
+
+    @yield('script')
 </body>
 
 </html>

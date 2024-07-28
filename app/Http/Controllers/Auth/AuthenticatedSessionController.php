@@ -34,6 +34,12 @@ class AuthenticatedSessionController extends Controller
             return redirect('/admin-panel/dashboard');
         }
 
+        if ($request->user()->hasRole('seller')) {
+            toastr()->closeButton()->success('کاربر با موفقیت وارد شد');
+
+            return redirect('/seller-panel/dashboard');
+        }
+
         toastr()->closeButton()->success('کاربر با موفقیت وارد شد');
 
         return redirect()->intended(route('dashboard'));

@@ -20,16 +20,7 @@ class Product extends Model
         'is_active',
     ];
 
-    // public function sluggable(): array
-    // {
-    //     return [
-    //         'slug' => [
-    //             'source' => 'name'
-    //         ]
-    //     ];
-    // }
-
-
+    protected $appends = ['quantity_check', 'price_check'];
 
     public function shop()
     {
@@ -40,10 +31,19 @@ class Product extends Model
     {
         return $this->shop ? $this->shop->shop_name : 'بدون فروشگاه';
     }
+
+    public function getPriceAttribute()
+    {
+        $variation = $this->variations()->where('quantity', '>', 0)->orderBy('price')->first();
+        return $variation ? $variation->price : null;
+    }
+
     public function getQuantityCheckAttribute()
     {
-        return $this->variations()->where('quantity', '>', 0)->first() ?? 0;
+        return $this->variations()->where('quantity', '>', 0)->first() ? true : false;
     }
+
+
 
     public function getPriceCheckAttribute()
     {
@@ -55,11 +55,7 @@ class Product extends Model
         return $is_active ? 'فعال' : 'غیرفعال';
     }
 
-    public function getPriceAttribute()
-    {
-        $variation = $this->variations()->where('quantity', '>', 0)->orderBy('price')->first();
-        return $variation ? $variation->price : null;
-    }
+
 
     public function scopeFilter($query)
     {
@@ -110,7 +106,6 @@ class Product extends Model
                     break;
             }
         }
-        // dd($query->toSql());
         return $query;
     }
 

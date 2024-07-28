@@ -10,7 +10,7 @@
                     <div class="products-wrapper">
                         @foreach ($chunk as $product)
                             <div class="product_card_itemmm">
-                                <img src="{{ asset('uploads/products/' . $product->primary_image) }}" class="product_img" alt="{{ $product->name }}">
+                                <img src="{{ asset('uploads/files/products/images/' . $product->primary_image) }}" class="product_img" alt="{{ $product->name }}">
                                 <div class="product_card_details">
                                     <div class="product_card_name">
                                         <i class="fas fa-tshirt icons"></i> {{ $product->name }}
@@ -21,11 +21,11 @@
                                         </div>
                                         <div class="money">
                                             <div class="product_info_item">
-                                                <i class="fas fa-money-bill-wave icons"></i>  تومان
+                                                <i class="fas fa-money-bill-wave icons"></i> {{ $product->price }} تومان
                                             </div>
                                         </div>
                                     </div>
-                                    <a href="" class="visit_button">
+                                    <a href="{{ route('home.products.show', ['product' => $product->slug]) }}" class="visit_button">
                                         <button class="visit">مشاهده محصول</button>
                                     </a>
                                 </div>

@@ -39,13 +39,14 @@ class CategoriesController extends Controller
     {
         $attributes = $category->attributes()->where('is_filter', 1)->with('values')->get();
         $variation = $category->attributes()->where('is_variation', 1)->with('variationValues')->first();
-        $products = $category->products()->filter()->search()->paginate(9);
+        $products = $category->products()->where('is_active', 1)->filter()->search()->paginate(9);
+        $parentCategories = Category::where('parent_id', 0)->with('children')->get();
 
-        // بازیابی همه دسته‌بندی‌ها
-        $allCategories = Category::all();
-
-        return view('categories.show', compact('category', 'attributes', 'variation', 'products', 'allCategories'));
+        return view('categories.show', compact('category', 'attributes', 'variation', 'products', 'parentCategories'));
     }
+
+
+
 
 
     public function edit(string $id)

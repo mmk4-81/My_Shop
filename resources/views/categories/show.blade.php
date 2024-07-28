@@ -15,30 +15,39 @@
                     <div class="pro-sidebar-search-form">
                         <input id="search-input" type="text" placeholder="... جستجو "
                             value="{{ request()->has('search') ? request()->search : '' }}">
-                        <button type="button" onclick="filter()">
-                            <i class="sli sli-magnifier"></i>
-                        </button>
+                            <i onclick="filter()" class="fas fa-magnifying-glass"></i>
+
                     </div>
                 </div>
             </div>
             <div class="sidebar-widget">
-                <h4 class="pro-sidebar-title"> دسته بندی </h4>
+                <h4 class="pro-sidebar-title">دسته بندی</h4>
                 <div class="sidebar-widget-list mt-30">
                     <ul>
-                        @if ($category->parent)
-                            {{ $category->parent->category_name }}
-                            @foreach ($category->parent->children as $childCategory)
-                                <li>
-                                    <a href="{{ route('home.category.show', ['category' => $childCategory->slug]) }}"
-                                        style="{{ $childCategory->slug == $category->slug ? 'color: #ff3535' : '' }}">
-                                        {{ $childCategory->category_name }}
-                                    </a>
-                                </li>
-                            @endforeach
-                        @endif
+                        @foreach ($parentCategories as $parentCategory)
+                        <li>
+                            <a href="{{ $parentCategory->slug == $category->slug && $childSlugForUrl ? route('home.category.show', ['category' => $childSlugForUrl]) : '#' }}"
+                                style="{{ $parentCategory->slug == $category->slug ? 'color: #ff3535' : '' }}">
+                                {{ $parentCategory->category_name }}
+                            </a>
+                            @if ($parentCategory->children->isNotEmpty())
+                                <ul class="submenu">
+                                    @foreach ($parentCategory->children as $childCategory)
+                                        <li>
+                                            <a href="{{ route('home.category.show', ['category' => $childCategory->slug]) }}"
+                                                style="{{ $childCategory->slug == $category->slug ? 'color: #ff3535' : '' }}">
+                                                {{ $childCategory->category_name }}
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            @endif
+                        </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
+
             <hr>
 
             @foreach ($attributes as $attribute)
@@ -124,38 +133,27 @@
                                     <div class="ht-product-content">
                                         <div class="ht-product-content-inner">
                                             <div class="ht-product-categories">
-                                                <a href="#">{{ $product->category->category_name }}</a>
+                                                <i class="fas fa-tags icons"></i><a href="#">{{$product->category->category_name }} - {{ $product->category->parent->category_name }}</a>
                                             </div>
                                             <h4 class="ht-product-title text-right">
                                                 <a href="#"> {{ $product->name }} </a>
                                             </h4>
-                                            <div class="ht-product-price">
+                                            <div class="product_info_item money">
                                                 @if($product->quantity_check)
-                                                    @if($product->sale_check)
-                                                        <span class="new">
-                                                            {{ number_format($product->sale_check->sale_price) }}
-                                                            تومان
-                                                        </span>
-                                                        <span class="old">
-                                                            {{ number_format($product->sale_check->price) }}
-                                                            تومان
-                                                        </span>
-                                                    @else
-                                                        <span class="new">
-                                                            {{ number_format($product->price_check->price) }}
-                                                            تومان
-                                                        </span>
-                                                    @endif
+                                                    <span class="new">
+                                                        <i class="fas fa-money-bill-wave icons"></i>{{ number_format($product->price) }} تومان
+                                                    </span>
                                                 @else
                                                     <div class="not-in-stock">
                                                         <p class="text-white">ناموجود</p>
                                                     </div>
                                                 @endif
                                             </div>
+
                                         </div>
-                                        <div class="pro-details-cart">
-                                            <a href="#">افزودن به سبد خرید</a>
-                                        </div>
+                                        <a href="{{ route('home.products.show', ['product' => $product->slug]) }}" class="visit_button">
+                                            <button class="visit">مشاهده محصول</button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -169,6 +167,9 @@
         </div>
     </div>
 
+    <div class="d-flex justify-content-center">
+        {{ $products->links() }}
+    </div>
 
 
     <form id="filter-form">
@@ -179,4 +180,98 @@
         <input id="filter-sort-by" type="hidden" name="sortBy">
         <input id="filter-search" type="hidden" name="search">
     </form>
+@endsection
+
+
+
+@section('script')
+    <script>
+        function filter() {
+
+            let attributes = @json($attributes);
+            attributes.map(attribute => {
+
+                let valueAttribute = $(`.attribute-${attribute.id}:checked`).map(function() {
+                    return this.value;
+                }).get().join('-');
+
+                if (valueAttribute == "") {
+                    $(`#filter-attribute-${attribute.id}`).prop('disabled', true);
+                } else {
+                    $(`#filter-attribute-${attribute.id}`).val(valueAttribute);
+                }
+
+            });
+
+            let variation = $('.variation:checked').map(function() {
+                return this.value;
+            }).get().join('-');
+            if (variation == "") {
+                $('#filter-variation').prop('disabled', true);
+            } else {
+                $('#filter-variation').val(variation);
+            }
+
+            let sortBy = $('#sort-by').val();
+            if (sortBy == "default") {
+                $('#filter-sort-by').prop('disabled', true);
+            } else {
+                $('#filter-sort-by').val(sortBy);
+            }
+
+            let search = $('#search-input').val();
+            if (search == "") {
+                $('#filter-search').prop('disabled', true);
+            } else {
+                $('#filter-search').val(search);
+            }
+
+            $('#filter-form').submit();
+        }
+
+        $('#filter-form').on('submit', function(event) {
+            event.preventDefault();
+            let currentUrl = '{{ url()->current() }}';
+            let url = currentUrl + '?' + decodeURIComponent($(this).serialize())
+            $(location).attr('href', url);
+        });
+
+        $('.variation-select').on('change' , function(){
+            let variation = JSON.parse(this.value);
+            let variationPriceDiv = $('.variation-price');
+            variationPriceDiv.empty();
+
+            if(variation.is_sale){
+                let spanSale = $('<span />' , {
+                    class : 'new',
+                    text : toPersianNum(number_format(variation.sale_price)) + ' تومان'
+                });
+                let spanPrice = $('<span />' , {
+                    class : 'old',
+                    text : toPersianNum(number_format(variation.price)) + ' تومان'
+                });
+
+                variationPriceDiv.append(spanSale);
+                variationPriceDiv.append(spanPrice);
+            }else{
+                let spanPrice = $('<span />' , {
+                    class : 'new',
+                    text : toPersianNum(number_format(variation.price)) + ' تومان'
+                });
+                variationPriceDiv.append(spanPrice);
+            }
+
+            $('.quantity-input').attr('data-max' , variation.quantity);
+            $('.quantity-input').val(1);
+
+        });
+
+        $('#pagination li a').map(function(){
+            let decodeUrl = decodeURIComponent($(this).attr('href'));
+            if( $(this).attr('href') !== undefined ){
+                $(this).attr('href' , decodeUrl);
+            }
+        });
+
+    </script>
 @endsection

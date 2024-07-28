@@ -22,7 +22,10 @@
                        value="{{ $product->category->category_name }}{{ $product->category->parent ? ' - ' . $product->category->parent->category_name : '' }}"
                        disabled>
             </div>
-
+            <div class="form-group col-md-3">
+                <label>فروشگاه</label>
+                <input class="form-control" type="text" value="{{ $product->getShopName() }}" disabled>
+            </div>
             <div class="form-group col-md-3">
                 <label>وضعیت</label>
                 <input class="form-control" type="text" value="{{ $product->is_active == 'فعال' ? 'فعال' : 'غیرفعال' }}" disabled>
