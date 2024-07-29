@@ -29,8 +29,8 @@
     text-align: center;
     width: 200px;
     border: 1px solid #fff;
-    background-color: #021a339e; /* Add a background color if needed */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a box shadow for better visual appearance */
+    background-color: #021a339e;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .store_card_item:hover {
@@ -122,7 +122,6 @@ input[type="search"] {
 }
 
 
-/* public/css/shop.css */
 .shop-details {
     display: flex;
     align-items: center;
@@ -196,18 +195,17 @@ input[type="search"] {
   }
 
 
-  /* resources/css/style.css */
 .store_section {
     position: relative;
     margin-bottom: 20px;
 }
 
 .carousel-item {
-    text-align: center; /* برای تنظیم مرکز محتوا */
+    text-align: center;
 }
 
 .store_card_item {
-    margin: auto; /* برای قرار دادن هر آیتم در وسط */
+    margin: auto;
 }
 
 .carousel-control-prev,
@@ -215,10 +213,9 @@ input[type="search"] {
     width: 5%;
     top: 50%;
     transform: translateY(-50%);
-    color: #000; /* رنگ دکمه‌ها */
-    text-shadow: 0 1px 1px rgba(0,0,0,0.5); /* افزودن سایه برای خوانایی بیشتر */
+    color: #000;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.5);
 }
-
 .followd{
     color: #fff;
 }

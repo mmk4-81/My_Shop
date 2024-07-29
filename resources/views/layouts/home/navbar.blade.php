@@ -77,8 +77,8 @@
                         </div>
                     </div>
                 @else
-                    <a href="{{ route('login') }}" class="loginlink ">
-                        <p class="loginhover">ورود / ثبت نام </p>
+                    <a href="{{ route('login') }}" class="loginlink2 ">
+                        <h6 class="loginhover">ورود / ثبت نام </h6>
                     </a>
             </div>
         @endauth

@@ -1,4 +1,3 @@
-/*فونت ها*/
 @font-face {
     font-family: B Yekan;
     src: url('../fonts/Byekan/Yekan.ttf');
@@ -81,7 +80,6 @@
     font-display: swap;
 }
 
-/*اسکرول صفحه*/
 ::-webkit-scrollbar {
     width: 10px;
 }

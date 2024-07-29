@@ -76,7 +76,7 @@
 }
 .loginlink {
     text-decoration: none;
-    font-size: 16px;
+    font-size: 14px;
     color: #fff;
     border: 1px solid #0e9fe1;
     border-radius: 8px;
@@ -89,6 +89,20 @@
     margin: 5px ;
 }
 
+.loginlink2 {
+    text-decoration: none;
+    font-size: 10px;
+    color: #fff;
+    border: 1px solid #0e9fe1;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 40px;
+    padding: 5px;
+    margin: 5px ;
+}
 .header_left .header_login {
     background-color: var(--primary-color);
     color: #fff;
@@ -136,9 +150,9 @@
     display: none;
     position: absolute;
     top: 100%;
-    left: 10px; /* منو از سمت راست باز می‌شود */
-    background-color: #0f172a; /* رنگ پس‌زمینه جدید */
-    color: white; /* رنگ متن‌ها سفید */
+    left: 10px;
+    background-color: #0f172a;
+    color: white;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 1;
     border-radius: 4px;
@@ -151,14 +165,14 @@
     padding: 10px 20px;
     text-align: right;
     text-decoration: none;
-    color: white; /* رنگ متن‌ها سفید */
+    color: white;
     display: flex;
     flex-direction: row;
 
 }
 
 .dropdown-menu .dropdown-item:hover {
-    background-color: #1e293b; /* رنگ پس‌زمینه هنگام هاور */
+    background-color: #1e293b;
 }
 
 .btn-link {
@@ -262,7 +276,7 @@ li > a.menu-title{
     display: flex;
     justify-content: space-between;
     flex-wrap: nowrap;
-    left: -90%; /* تنظیم منو به سمت وسط */
+    left: -90%;
     padding: 20px;
     position: absolute;
     top: 100%;
@@ -271,7 +285,7 @@ li > a.menu-title{
     transition: all 0.5s ease 0s;
     visibility: hidden;
     width: auto;
-    z-index: 999;
+    z-index: 99999;
     height: auto;
     /* border: 1px dashed #0e9fe1; */
   }

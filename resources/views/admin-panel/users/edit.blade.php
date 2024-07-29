@@ -2,8 +2,7 @@
 
 @section('onvan', 'ویرایش کردن کاربر')
 @section('page-title', 'ویرایش کردن کاربر')
-{{-- @section('role', 'ادمین')
-@section('user-role', 'ادمین سایت') --}}
+
 
 @section('mohtava')
 <div class="form-container">

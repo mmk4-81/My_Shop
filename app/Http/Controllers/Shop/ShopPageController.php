@@ -25,7 +25,7 @@ class ShopPageController extends Controller
     public function show($id)
     {
         $shop = Shops::findOrFail($id);
-        $products = Product::where('shop_id', $shop->id)->where('is_active', 1)->get();
+        $products = Product::where('shop_id', $shop->id)->where('is_active', 1)->paginate(4);
         $followedShops = Auth::check() ? Auth::user()->followedShops->pluck('id')->toArray() : [];
         $followersCount = $shop->followersCount();
 

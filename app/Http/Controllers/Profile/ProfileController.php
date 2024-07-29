@@ -19,6 +19,12 @@ class ProfileController extends Controller
         ]);
     }
 
+    public function index()
+    {
+        $user = Auth::user();
+        return view('profile.edit', compact('user'));
+    }
+
     /**
      * Update the user's profile information.
      */
@@ -35,13 +41,11 @@ class ProfileController extends Controller
             'address' => 'string|max:255',
         ]);
 
-        // Handle avatar upload
         if ($request->hasFile('avatar')) {
             $image = $request->file('avatar');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
             $image->move(public_path('uploads/avatars'), $imageName);
 
-            // Delete old avatar if exists
             if ($user->avatar) {
                 $oldAvatarPath = public_path('uploads/avatars/' . $user->avatar);
                 if (file_exists($oldAvatarPath)) {
@@ -49,11 +53,9 @@ class ProfileController extends Controller
                 }
             }
 
-            // Store new avatar
             $user->avatar = $imageName;
         }
 
-        // Update user information
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->phone = $request->input('phone');

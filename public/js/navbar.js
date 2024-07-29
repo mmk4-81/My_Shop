@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', function () {
         dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
     });
 
-    // Close the dropdown if the user clicks outside of it
     window.addEventListener('click', function (event) {
         if (!event.target.closest('.dropdown')) {
             dropdownMenu.style.display = 'none';

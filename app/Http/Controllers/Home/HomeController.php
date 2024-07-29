@@ -15,7 +15,7 @@ class HomeController extends Controller
     public function index()
     {
         $products = Product::where('is_active', 1)->orderBy('created_at', 'desc')->paginate(12);
-        $shops = Shops::orderBy('created_at', 'asc')->paginate(12);
+        $shops = Shops::where('is_active', 1)->orderBy('created_at', 'asc')->paginate(12);
 
         return view('home.index', compact('shops', 'products'));
     }

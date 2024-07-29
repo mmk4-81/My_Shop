@@ -10,11 +10,11 @@
     width: 20%;
     background-color: #0a4763;
     padding: 20px;
-    position: sticky; /* Changed from fixed to sticky */
-    top: 0; /* Adjust this value if needed */
+    position: sticky;
+    top: 0;
     height: auto;
     z-index: 1;
-    border-radius: 8px; /* Higher z-index if needed to ensure it stays on top of other content in the container */
+    border-radius: 8px;
 }
 
 
@@ -1323,7 +1323,6 @@
     border-radius: 8px;
   }
 
-  /* استایل کلی برای wrapping element */
 .select-shoing-wrap {
     margin: 20px 0;
     border: none;
@@ -1334,7 +1333,6 @@
     padding:5px 10px;
     border-radius: 8px;
 }
-/* استایل برای div که شامل انتخابگر است */
 .shop-select {
     position: relative;
     display: inline-block;
@@ -1342,7 +1340,6 @@
 
 }
 
-/* استایل برای انتخابگر */
 .styled-select {
     width: 200px;
     padding: 10px 15px;
@@ -1359,7 +1356,6 @@
     cursor: pointer;
 }
 
-/* ایجاد پیکان برای انتخابگر */
 .styled-select::after {
     content: '▼';
     font-size: 14px;
@@ -1372,13 +1368,11 @@
     z-index: 1;
 }
 
-/* استایل برای گزینه‌های انتخابگر */
 .styled-select option {
     background-color: #fff;
     color: #333;
 }
 
-/* افکت hover برای انتخابگر */
 .styled-select:hover {
     border-color: #888;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);

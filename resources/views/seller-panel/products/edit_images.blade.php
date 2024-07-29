@@ -13,7 +13,6 @@
         <hr>
 
 
-        {{-- Show Primary Image --}}
         <div class="row">
             <div class="col-12 col-md-12 mb-5">
                 <h5>تصویر اصلی : </h5>
@@ -93,18 +92,13 @@
 
 @section('script')
     <script>
-        // Show File Name
         $('#primary_image').change(function() {
-            //get the file name
             var fileName = $(this).val();
-            //replace the "Choose a file" label
             $(this).next('.custom-file-label').html(fileName);
         });
 
         $('#images').change(function() {
-            //get the file name
             var fileName = $(this).val();
-            //replace the "Choose a file" label
             $(this).next('.custom-file-label').html(fileName);
         });
 

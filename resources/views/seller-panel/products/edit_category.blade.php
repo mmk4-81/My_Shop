@@ -93,14 +93,11 @@
             $.get(`{{ url('/seller-panel/category-attributes/${categoryId}') }}`, function(response,
                 status) {
                 if (status == 'success') {
-                    // console.log(response);
 
                     $('#attributesContainer').fadeIn();
 
-                    // Empty Attribute Container
                     $('#attributes').find('div').remove();
 
-                    // Create and Append Attributes Input
                     response.attrubtes.forEach(attribute => {
                         let attributeFormGroup = $('<div/>', {
                             class: 'form-group col-md-3'

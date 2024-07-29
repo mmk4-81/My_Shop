@@ -7,7 +7,7 @@
 
     <div id="shopCarousel" class="carousel slide">
         <div class="carousel-inner">
-            @foreach ($shops->chunk(4) as $chunk) <!-- Break shops into chunks of 4 for each slide -->
+            @foreach ($shops->chunk(4) as $chunk) 
                 <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
                     <div class="store-row ">
                         @foreach ($chunk as $shop)

@@ -27,19 +27,7 @@ class Order extends Model
         return $status;
     }
 
-    public function getPaymentTypeAttribute($paymentType)
-    {
-        switch($paymentType){
-            case 'pos' :
-                $paymentType = 'دستگاه pos';
-                break;
-            case 'online' :
-                $paymentType = 'اینترنتی';
-                break;
-        }
-        return $paymentType;
-    }
-
+   
     public function getPaymentStatusAttribute($paymentStatus)
     {
         switch($paymentStatus){

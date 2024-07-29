@@ -1,8 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('onvan', ' نمایش دسته بندی  ')
-{{-- @section('page-title', 'دسته بندی ها') --}}
-{{-- @section('role', $user->hasRole('seller') ? 'فروشنده ' : 'ادمین ') --}}
+
 
 
 

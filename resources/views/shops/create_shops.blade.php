@@ -10,8 +10,6 @@
     <style>
         .box {
             display: flex;
-            /* justify-content: center; */
-            /* align-items: center; */
             width: 1000px;
             height: 500px;
             margin: 90px auto;

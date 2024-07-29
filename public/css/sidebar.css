@@ -151,13 +151,13 @@ ul{
 
 #search-input {
     width: 100%;
-    padding-right: 40px; /* برای ایجاد فضای کافی برای آیکون */
+    padding-right: 40px;
     box-sizing: border-box;
 }
 
 .pro-sidebar-search-form .fas.fa-magnifying-glass {
     position: absolute;
-    left: 10px; /* موقعیت‌دهی آیکون داخل فیلد */
+    left: 10px;
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;

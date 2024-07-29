@@ -1,4 +1,3 @@
-<!-- resources/views/products/index.blade.php -->
 <div class="product_section">
     <h1 class="product_section_title">
         ارائه دهنده لباس‌های متنوع و با قیمت مناسب

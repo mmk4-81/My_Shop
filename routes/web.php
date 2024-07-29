@@ -32,10 +32,11 @@ Route::get('/test', function () {
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/categories/{category:slug}', [CategoriesController::class, 'show'])->name('home.category.show');
-Route::get('/dashboard', function () {
-    return view('home/index');
-})->middleware(['auth', 'verified'])->name('dashboard');
-Route::get('/shops', [ShopPageController::class, 'index']);
+Route::get('/dashboard', [ProfileController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
+Route::resource('shops', ShopPageController::class)->only(['index', 'show']);
+
 Route::get('/shops/search', [ShopPageController::class, 'search_shops'])->name('shops.search');
 Route::get('/products/{product:slug}', [productPageController::class, 'show'])->name('home.products.show');
 
@@ -44,16 +45,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::resource('shops', ShopPageController::class)->only(['index', 'create', 'store', 'show']);
+    // Route::resource('shops', ShopPageController::class)->only(['index', 'create', 'store', 'show']);
+    Route::resource('shops', ShopPageController::class)->only(['create', 'store']);
     Route::post('/follow/{shop}', [FollowingController::class, 'follow'])->name('shops.follow');
     Route::post('/unfollow/{shop}', [FollowingController::class, 'unfollow'])->name('shops.unfollow');
-    Route::get('/cart/show', [CartController::class, 'showCart'])->name('cart.show'); // Custom show cart
-    Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add'); // Add item to cart
-    Route::delete('/cart/remove', [CartController::class, 'remove'])->name('cart.remove'); // Remove item from cart
-    Route::post('/cart/update', [CartController::class, 'adupdated'])->name('cart.update'); // Add item to cart
-
-
-
+    Route::get('/cart/show', [CartController::class, 'showCart'])->name('cart.show');
+    Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
+    Route::delete('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');
+    Route::post('/cart/update', [CartController::class, 'adupdated'])->name('cart.update');
 });
 
 
@@ -85,19 +84,8 @@ Route::middleware(['auth', 'seller'])->prefix('seller-panel')->name('seller.')->
     Route::delete('products/{product}/images-destroy', [ProductImageController::class, 'destroy'])->name('products.images.destroy');
     Route::put('products/{product}/images-set-primary', [ProductImageController::class, 'setPrimary'])->name('products.images.set_primary');
     Route::post('products/{product}/images-add', [ProductImageController::class, 'add'])->name('products.images.add');
-
     Route::resource('orders', OrderSController::class);
     Route::get('/category-attributes/{category}', [CategoryController::class, 'getCategoryAttributes']);
 });
 
-
-Route::middleware(['auth', 'admin_or_seller'])->group(function () {
-    Route::prefix('admin-panel')->group(function () {
-    });
-
-
-    Route::prefix('seller-panel')->group(function () {
-    });
-
-});
 

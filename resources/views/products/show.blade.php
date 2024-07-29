@@ -8,7 +8,6 @@
     <div class="containers">
         <div class="row">
 
-            <!-- جزئیات محصول -->
             <div class="col-lg-6 col-md-6 order-2 order-sm-2 order-md-1" style="direction: rtl;">
                 <div class="product-details-content ml-30">
                     <h2 class="text-right"> {{ $product->name }} </h2>
@@ -81,7 +80,6 @@
                 </div>
             </div>
 
-            <!-- تصاویر محصول -->
             <div class="col-lg-6 col-md-6 order-1 order-sm-1 order-md-2">
                 <div class="product-details-img">
                     <div class="zoompro-border zoompro-span">

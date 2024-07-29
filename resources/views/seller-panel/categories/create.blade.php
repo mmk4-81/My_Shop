@@ -2,7 +2,6 @@
 
 @section('onvan', ' دسته بندی ها ')
 @section('page-title', 'ایجاد دسته بندی')
-{{-- @section('role', $user->hasRole('seller') ? 'فروشنده ' : 'ادمین ') --}}
 
 
 

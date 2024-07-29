@@ -2,7 +2,6 @@
 
 @section('onvan', ' دسته بندی ها ')
 @section('page-title', 'دسته بندی ها')
-{{-- @section('role', $user->hasRole('seller') ? 'فروشنده ' : 'ادمین ') --}}
 
 @section('mohtava')
 <div class="col-xl-12 col-md-12 mb-4 p-md-5">

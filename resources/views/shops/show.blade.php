@@ -8,12 +8,10 @@
 
 @section('mohtava')
 <div class="shop-details">
-    <!-- Shop Avatar -->
     <div class="store_img avatar_shop">
         <img src="{{ asset('/uploads/avatars/shops/' . $shop->avatar_shops) }}" alt="{{ $shop->shop_name }} Avatar">
     </div>
 
-    <!-- Shop Name and Description -->
     <div class="shop-info">
         <h3>{{ $shop->shop_name }}</h3>
         <p>{{ $shop->description }}</p>
@@ -38,7 +36,6 @@
     </div>
 </div>
 
-<!-- Products Section -->
 <div class="shop-products">
     <h2>محصولات فروشگاه : {{$products->count()}}</h2>
     <div class="product-row">
@@ -69,5 +66,7 @@
         @endforelse
     </div>
 </div>
-
+<div class="d-flex justify-content-center">
+    {{$products->links()}}
+</div>
 @endsection
