@@ -42,32 +42,29 @@ Here are some screenshots of the landing page:
 
 Follow these steps to run the project locally:
 
+## ⚙️ Installation & Setup
+
+Follow these steps to run the project locally:
+
 ### 1. Clone the repository
 ```bash
 git clone https://github.com/mmk4-81/My_Shop.git
 cd My_Shop
 
-
- 2. Install PHP dependencies
-```bash
+2. Install PHP dependencies
 composer install
 
 3. Create environment file
-```bash
 cp .env.example .env
 
 4. Generate application key
-```bash
 php artisan key:generate
 
 5. Configure database
-```bash
 Edit the .env file with your database credentials (MySQL or any supported DB).
 
 6. Run migrations
-```bash
 php artisan migrate
 
 7. Start the development server
-```bash
 php artisan serve
